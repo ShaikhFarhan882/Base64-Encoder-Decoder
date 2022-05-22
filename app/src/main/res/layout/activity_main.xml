@@ -26,7 +26,7 @@
 
     <EditText
         android:id="@+id/input_text"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="150dp"
         android:layout_marginTop="136dp"
         android:background="@color/gray"
@@ -40,18 +40,18 @@
         android:textColorHint="@color/white"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/output_text"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="150dp"
         android:background="@color/gray"
         android:backgroundTint="@color/gray"
         android:ems="10"
-        android:hint="Output"
+        android:hint="Output will appear here"
         android:inputType="textMultiLine"
         android:maxLines="5"
         android:padding="16sp"
@@ -60,19 +60,19 @@
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.628" />
+        app:layout_constraintVertical_bias="0.635" />
 
     <Button
         android:id="@+id/clear_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="296dp"
+        android:backgroundTint="@color/clear"
         android:text="Clear"
         android:textStyle="bold"
-        android:backgroundTint="@color/clear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"

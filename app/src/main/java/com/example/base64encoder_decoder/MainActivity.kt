@@ -72,13 +72,16 @@ class MainActivity : AppCompatActivity() {
            if(Input.text.isEmpty()){
                Toast.makeText(this,"Please Enter Input",Toast.LENGTH_SHORT).show()
            }
+           else{
+               val input = input_text?.text.toString()
+               val byte = input.toByteArray(charset("UTF-8"))
+               val result = Base64.getEncoder().encodeToString(byte)
 
-           val input = input_text?.text.toString()
-           val byte = input.toByteArray(charset("UTF-8"))
-           val result = Base64.getEncoder().encodeToString(byte)
+               Output.setText(result)
+               Toast.makeText(this,"Successfully Encoded",Toast.LENGTH_SHORT).show()
 
-           Output.setText(result)
-           Toast.makeText(this,"Successfully Encoded",Toast.LENGTH_SHORT).show()
+           }
+
 
        })
 
@@ -87,16 +90,15 @@ class MainActivity : AppCompatActivity() {
             if(Input.text.isEmpty()){
                 Toast.makeText(this,"Please Enter Input",Toast.LENGTH_SHORT).show()
             }
+            else{
+                val input = input_text?.text.toString()
+                val byte = Base64.getUrlDecoder().decode(input)
+                val result = String(byte, charset("UTF-8"))
 
-            val input = input_text?.text.toString()
-            val byte = Base64.getUrlDecoder().decode(input)
-            val result = String(byte, charset("UTF-8"))
+                Output.setText(result)
+                Toast.makeText(this,"Sucessfully Decoded",Toast.LENGTH_SHORT).show()
 
-            Output.setText(result)
-            Toast.makeText(this,"Sucessfully Decoded",Toast.LENGTH_SHORT).show()
-
-
-
+            }
 
         })
 
