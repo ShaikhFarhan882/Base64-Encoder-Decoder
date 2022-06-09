@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/dark">
+    android:background="@color/dark"
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -28,11 +28,14 @@
         android:id="@+id/input_text"
         android:layout_width="380dp"
         android:layout_height="150dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="136dp"
-        android:background="@color/gray"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/et_bg"
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="Enter Text Here"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:inputType="textMultiLine"
         android:maxLines="5"
         android:padding="16sp"
@@ -48,7 +51,9 @@
         android:id="@+id/output_text"
         android:layout_width="380dp"
         android:layout_height="150dp"
-        android:background="@color/gray"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/et_bg"
         android:backgroundTint="@color/gray"
         android:ems="10"
         android:hint="Output will appear here"
@@ -57,6 +62,7 @@
         android:padding="16sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +78,7 @@
         android:layout_marginTop="296dp"
         android:backgroundTint="@color/clear"
         android:text="Clear"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -82,9 +89,10 @@
         android:id="@+id/copy_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Copy"
-        android:textStyle="bold"
         android:backgroundTint="@color/copy"
+        android:text="Copy"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -96,9 +104,9 @@
         android:id="@+id/decode_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:padding="32dp"
         android:text="Decode"
-        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -110,10 +118,10 @@
         android:id="@+id/encode_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:padding="32dp"
         android:text="Encode"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@id/guideline"
@@ -127,8 +135,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

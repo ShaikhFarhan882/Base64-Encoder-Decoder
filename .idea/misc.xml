@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/FARHAN/AndroidStudioProjects/Base64EncoderDecoder/app/src/main/res/drawable/custom_cursor.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/Base64EncoderDecoder/app/src/main/res/drawable/tv_bg.xml" value="0.18518518518518517" />
-        <entry key="..\:/Users/FARHAN/AndroidStudioProjects/Base64EncoderDecoder/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/FARHAN/AndroidStudioProjects/Base64EncoderDecoder/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/Base64EncoderDecoder/app/src/main/res/layout/activity_result.xml" value="0.22" />
       </map>
     </option>
