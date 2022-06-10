@@ -1,64 +1,54 @@
 package com.example.base64encoder_decoder
 
+import android.R.attr.label
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Base64.DEFAULT
-import android.util.Base64.encodeToString
 import android.view.View
-import android.widget.Button
-import android.widget.EdgeEffect
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.base64encoder_decoder.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.UnsupportedEncodingException
-import java.util.Base64
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        clear_text.setOnClickListener(View.OnClickListener {
-            input_text.setText("")
-            output_text.setText("")
-            Toast.makeText(this, "Fields Cleared", Toast.LENGTH_SHORT).show()
-        })
-
-        copy_text.setOnClickListener(View.OnClickListener {
-
-            if (output_text.text.isEmpty()) {
-                Toast.makeText(this, "Nothing to copy", Toast.LENGTH_SHORT).show()
-            } else {
-                val textToCopy = output_text.text
-                val clipboardManager =
-                    getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", textToCopy)
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_LONG).show()
-
+        binding.clearText.setOnClickListener(View.OnClickListener {
+            GlobalScope.launch (Dispatchers.Main){
+                clearFields()
             }
 
         })
 
-        encode_text.setOnClickListener(View.OnClickListener {
+        binding.copyText.setOnClickListener(View.OnClickListener {
+
+         val copyText = binding.outputText.text.toString()
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("copyText", copyText)
+            clipboard.setPrimaryClip(clip)
+        })
+
+        binding.encodeText.setOnClickListener(View.OnClickListener {
             GlobalScope.launch(Dispatchers.Main) {
                 encodeText()
             }
 
         })
 
-        decode_text.setOnClickListener(View.OnClickListener {
+        binding.decodeText.setOnClickListener(View.OnClickListener {
 
             GlobalScope.launch(Dispatchers.Main) {
                 decodeText()
@@ -69,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     suspend fun decodeText() {
-        if (input_text.text.isEmpty()) {
+        if (binding.inputText.text.isEmpty()) {
             Toast.makeText(this, "Please Enter Input", Toast.LENGTH_SHORT).show()
         }
         try {
@@ -77,8 +67,7 @@ class MainActivity : AppCompatActivity() {
             val byte = Base64.getUrlDecoder().decode(input)
             val result = String(byte, charset("UTF-8"))
 
-
-            output_text.setText(result)
+            binding.outputText.setText(result)
         } catch (e: UnsupportedEncodingException) {
             e.printStackTrace()
         } catch (ar: IllegalArgumentException) {
@@ -88,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     suspend fun encodeText() {
-        if (input_text.text.isEmpty()) {
+        if (binding.inputText.text.isEmpty()) {
             Toast.makeText(this, "Please Enter Input", Toast.LENGTH_SHORT).show()
         }
         try {
@@ -96,12 +85,24 @@ class MainActivity : AppCompatActivity() {
             val byte = input.toByteArray(charset("UTF-8"))
             val result = Base64.getUrlEncoder().encodeToString(byte)
 
-            output_text.setText(result)
+            binding.outputText.setText(result)
 
         } catch (e: UnsupportedEncodingException) {
             Toast.makeText(this, "Unsupported Text", Toast.LENGTH_SHORT).show()
 
         }
     }
+
+    suspend fun clearFields() {
+        if (binding.inputText.text.isNotEmpty()){
+            binding.inputText.setText("")
+            binding.outputText.setText("")
+            Toast.makeText(this, "Fields Cleared", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this, "Nothing to Clear", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
 }
