@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.b64_encoder_decoder.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_encodeResults"
+            app:destination="@id/encodeResults" />
+        <action
+            android:id="@+id/action_home2_to_decodeResults"
+            app:destination="@id/decodeResults" />
+    </fragment>
+    <fragment
+        android:id="@+id/encodeResults"
+        android:name="com.example.b64_encoder_decoder.EncodeResults"
+        android:label="fragment_encode_results"
+        tools:layout="@layout/fragment_encode_results" >
+        <argument
+            android:name="encodeddata"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_encodeResults_to_home2"
+            app:destination="@id/home2"
+            app:popUpTo="@id/home2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/decodeResults"
+        android:name="com.example.b64_encoder_decoder.DecodeResults"
+        android:label="fragment_decode_results"
+        tools:layout="@layout/fragment_decode_results" >
+        <argument
+            android:name="decodeddata"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_decodeResults_to_home2"
+            app:destination="@id/home2"
+            app:popUpTo="@id/home2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.b64_encoder_decoder.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">B64-Encoder-Decoder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">Base64 Encoder Decoder Helps you to encode any text to B64 and decode any B64 format text easily</string>
+</resources>
