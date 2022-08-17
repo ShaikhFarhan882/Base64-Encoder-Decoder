@@ -11,14 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.b64_encoder_decoder.databinding.FragmentHomeBinding
 import com.example.b64_encoder_decoder.viewmodels.MainViewModel
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
 class Home : Fragment() {
 
-    private var _binding : FragmentHomeBinding? = null
-    private val binding : FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding: FragmentHomeBinding
         get() = _binding!!
 
     private val viewModel: MainViewModel by viewModels()
@@ -35,32 +36,39 @@ class Home : Fragment() {
 
                 if (!TextUtils.isEmpty(inputText.text.toString())) {
                     val input = inputText.text.toString()
-                    val data = viewModel.encode(input)
-                    val action = HomeDirections.actionHome2ToEncodeResults(data)
-                    findNavController().navigate(action)
-                    inputText.text.clear()
-                }
-                else{
-                    Toasty.error(requireContext(),"No Input Provided",Toasty.LENGTH_SHORT).show()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val data = viewModel.encode(input)
+                        withContext(Dispatchers.Main) {
+                            val action = HomeDirections.actionHome2ToEncodeResults(data)
+                            findNavController().navigate(action)
+                            inputText.text.clear()
+                        }
+                    }
+                } else {
+                    Toasty.error(requireContext(), "No Input Provided", Toasty.LENGTH_SHORT).show()
                 }
 
             }
 
             decodeText.setOnClickListener {
-                val isBase64 : Boolean = checkForEncode(inputText.text.toString())
+                val isBase64: Boolean = checkForEncode(inputText.text.toString())
 
                 if (!TextUtils.isEmpty(inputText.text.toString()) && isBase64) {
                     val input = inputText.text.toString()
-                    val data = viewModel.decode(input)
-                    val action = HomeDirections.actionHome2ToDecodeResults(data)
-                    findNavController().navigate(action)
-                    inputText.text.clear()
-                }
-                else if (TextUtils.isEmpty(inputText.text.toString())){
-                    Toasty.error(requireContext(),"No Input Provided",Toasty.LENGTH_SHORT).show()
-                }
-                else{
-                    Toasty.error(requireContext(),"Base64 format is required for decoding",Toasty.LENGTH_SHORT).show()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val data = viewModel.decode(input)
+                        withContext(Dispatchers.Main) {
+                            val action = HomeDirections.actionHome2ToEncodeResults(data)
+                            findNavController().navigate(action)
+                            inputText.text.clear()
+                        }
+                    }
+                } else if (TextUtils.isEmpty(inputText.text.toString())) {
+                    Toasty.error(requireContext(), "No Input Provided", Toasty.LENGTH_SHORT).show()
+                } else {
+                    Toasty.error(requireContext(),
+                        "Base64 format is required for decoding",
+                        Toasty.LENGTH_SHORT).show()
                 }
             }
 

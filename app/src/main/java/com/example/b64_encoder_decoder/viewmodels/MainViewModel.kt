@@ -10,10 +10,8 @@ import java.util.*
 
 class MainViewModel : ViewModel() {
 
-/*    val encodedResults = MutableLiveData<String>()
-    val decodedResults = MutableLiveData<String>()*/
 
-    fun encode(input: String) : String{
+     suspend fun encode(input: String) : String{
         var result : String = ""
         try {
             val byte = input.toByteArray(charset("UTF-8"))
@@ -23,7 +21,7 @@ class MainViewModel : ViewModel() {
         }
         return result
     }
-    fun decode(input: String) : String {
+    suspend fun decode(input: String) : String {
 
         var result : String = ""
         try {
