@@ -5,8 +5,10 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.b64_encoder_decoder.databinding.FragmentHomeBinding
 import com.example.b64_encoder_decoder.viewmodels.MainViewModel
@@ -34,15 +36,13 @@ class Home : Fragment() {
         binding.apply {
             encodeText.setOnClickListener {
 
-                if (!TextUtils.isEmpty(inputText.text.toString())) {
-                    val input = inputText.text.toString()
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val data = viewModel.encode(input)
-                        withContext(Dispatchers.Main) {
-                            val action = HomeDirections.actionHome2ToEncodeResults(data)
-                            findNavController().navigate(action)
-                            inputText.text.clear()
-                        }
+                if (inputText.text.toString().isNotEmpty()) {
+                    lifecycleScope.launch{
+                        val input = inputText.text.toString()
+                        val data = viewModel.encodeURL(input)
+                        val action = HomeDirections.actionHome2ToEncodeResults(data)
+                        findNavController().navigate(action)
+                        inputText.text.clear()
                     }
                 } else {
                     Toasty.error(requireContext(), "No Input Provided", Toasty.LENGTH_SHORT).show()
@@ -54,15 +54,14 @@ class Home : Fragment() {
                 val isBase64: Boolean = checkForEncode(inputText.text.toString())
 
                 if (!TextUtils.isEmpty(inputText.text.toString()) && isBase64) {
-                    val input = inputText.text.toString()
-                    CoroutineScope(Dispatchers.IO).launch {
+                    lifecycleScope.launch{
+                        val input = inputText.text.toString()
                         val data = viewModel.decode(input)
-                        withContext(Dispatchers.Main) {
-                            val action = HomeDirections.actionHome2ToEncodeResults(data)
-                            findNavController().navigate(action)
-                            inputText.text.clear()
-                        }
+                        val action = HomeDirections.actionHome2ToDecodeResults(data)
+                        findNavController().navigate(action)
+                        inputText.text.clear()
                     }
+
                 } else if (TextUtils.isEmpty(inputText.text.toString())) {
                     Toasty.error(requireContext(), "No Input Provided", Toasty.LENGTH_SHORT).show()
                 } else {

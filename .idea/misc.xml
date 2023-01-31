@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/drawable/et_bg.xml" value="0.1075" />
+        <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/drawable/ic_back.xml" value="0.144" />
+        <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/drawable/ic_home.xml" value="0.144" />
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/layout/fragment_about.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/FARHAN/AndroidStudioProjects/B64EncoderDecoder/app/src/main/res/layout/fragment_decode_results.xml" value="0.31296296296296294" />

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.b64_encoder_decoder.databinding.FragmentEncodeResultsBinding
@@ -26,6 +27,7 @@ class EncodeResults : Fragment() {
     private var _binding : FragmentEncodeResultsBinding? = null
     private val binding : FragmentEncodeResultsBinding
     get() = _binding!!
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +35,9 @@ class EncodeResults : Fragment() {
     ): View? {
         _binding = FragmentEncodeResultsBinding.inflate(layoutInflater)
 
+
         binding.apply {
             encodeResults.text = args.encodeddata.toString()
-
             copyText.setOnClickListener {
                 copyData(encodeResults.text.toString())
                 Toasty.success(requireContext(),"Copied Successfully",Toasty.LENGTH_SHORT).show()

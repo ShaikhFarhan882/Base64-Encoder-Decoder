@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home2_to_encodeResults"
-            app:destination="@id/encodeResults" />
+            app:destination="@id/encodeResults"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_home2_to_decodeResults"
-            app:destination="@id/decodeResults" />
+            app:destination="@id/encode_results"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/encodeResults"
@@ -32,7 +40,7 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/decodeResults"
+        android:id="@+id/encode_results"
         android:name="com.example.b64_encoder_decoder.DecodeResults"
         android:label="fragment_decode_results"
         tools:layout="@layout/fragment_decode_results" >
