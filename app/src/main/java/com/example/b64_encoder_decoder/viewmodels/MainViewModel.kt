@@ -7,20 +7,6 @@ import java.util.*
 
 class MainViewModel : ViewModel() {
 
-    /*val encodedData: MutableLiveData<String> = MutableLiveData()*/
-
-
-   /* fun encode(input: String): String {
-        var encodedString: String = ""
-        try {
-            val byte = input.toByteArray(charset("UTF-8"))
-            encodedString = Base64.getUrlEncoder().encodeToString(byte)
-        } catch (e: UnsupportedEncodingException) {
-            e.printStackTrace()
-        }
-        return encodedString
-    }*/
-
     suspend fun decode(input: String): String {
         var decodeString: String = ""
         withContext(Dispatchers.IO){
