@@ -42,7 +42,7 @@ class Home : Fragment() {
                         val data = viewModel.encodeURL(input)
                         val action = HomeDirections.actionHome2ToEncodeResults(data)
                         findNavController().navigate(action)
-                        inputText.text.clear()
+                      /*  inputText.text.clear()*/
                     }
                 } else {
                     Toasty.error(requireContext(), "No Input Provided", Toasty.LENGTH_SHORT).show()
@@ -59,7 +59,7 @@ class Home : Fragment() {
                         val data = viewModel.decode(input)
                         val action = HomeDirections.actionHome2ToDecodeResults(data)
                         findNavController().navigate(action)
-                        inputText.text.clear()
+                       /* inputText.text.clear()*/
                     }
 
                 } else if (TextUtils.isEmpty(inputText.text.toString())) {
@@ -72,7 +72,7 @@ class Home : Fragment() {
             }
 
             clearText.setOnClickListener {
-                inputText.text.clear()
+              inputText.text!!.clear()
             }
         }
 

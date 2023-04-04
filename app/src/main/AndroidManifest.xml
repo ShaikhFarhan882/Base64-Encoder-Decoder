@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_new"
         android:supportsRtl="true"
-        android:theme="@style/Theme.B64EncoderDecoder"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"

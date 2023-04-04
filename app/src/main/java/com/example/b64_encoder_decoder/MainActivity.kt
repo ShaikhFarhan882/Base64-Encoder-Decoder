@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.b64_encoder_decoder.databinding.ActivityMainBinding
+import com.google.android.material.elevation.SurfaceColors
 
 private lateinit var navController : NavController
 
@@ -17,11 +18,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
         navController = navHostFragment.navController
 
         binding.bottomNav.setupWithNavController(navController)
+
 
     }
 
